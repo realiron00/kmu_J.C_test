@@ -16,14 +16,29 @@ public:
     CVector(int size, double arr[]); //CVector myVec(3,arr); CVector myV;
     // Copy Constructor
     CVector (Cvector& cv); //make class variation same with cv f(myVec)
-
+    void ScalarMul(double alpha); //벡터의 상수배
+    void Print(); //출력하기
     // Desctructor --> 
     ~CVector() { delete[] mVec; };
 };
 
+void CVector::Print()
+{
+printf("[");
+for (i=0;i<mSize;i++{
+printf("%f", mVec[i]); //%5.2f
+}
+printf("]\n");
+}
+
+void CVector::ScalarMul(double alpha) {
+for(int i=0;i<mSize;i++){
+mVec[i] *= alpha;
+}
+
 CVector::CVector(CVector& cv) {
 mSize = cv.mSize;
-//mVec = cv.mVec;
+//working who default copy constructor: mVec = cv.mVec;
 
 mVec = new double[mSize];
 for(int i=0;i<mSize;i++){
@@ -39,10 +54,19 @@ CVector::CVector(int size, double arr[]) {
     }
 }
 
+void CVector_test(){
+CVector vec1;
+double arr1[3] = {1.0,2.0,3.0}
+CVector vec2(3, arr1);
 
+vec1.Print();
+vec2.Print();
+vec2.ScalarMul(10.);
+vec2.Print();
+}
 
 
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    CVector_test();
