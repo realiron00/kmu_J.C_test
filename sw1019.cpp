@@ -15,10 +15,21 @@ public:
     }; // 세미콜론(;) 필요함
     CVector(int size, double arr[]); //CVector myVec(3,arr); CVector myV;
     // Copy Constructor
+    CVector (Cvector& cv); //make class variation same with cv f(myVec)
 
     // Desctructor --> 
     ~CVector() { delete[] mVec; };
 };
+
+CVector::CVector(CVector& cv) {
+mSize = cv.mSize;
+//mVec = cv.mVec;
+
+mVec = new double[mSize];
+for(int i=0;i<mSize;i++){
+mVec[i]=cv.mVec[i];
+}
+} 
 
 CVector::CVector(int size, double arr[]) {
     mSize = size;
