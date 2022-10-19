@@ -18,9 +18,18 @@ public:
     CVector (Cvector& cv); //make class variation same with cv f(myVec)
     void ScalarMul(double alpha); //벡터의 상수배
     void Print(); //출력하기
+    void Add(CVector vec);
     // Desctructor --> 
     ~CVector() { delete[] mVec; };
 };
+
+void CVector::Add(CVector vec)
+{
+    //Check size
+    for(int i=0;i<mSize;i++){
+        mVec[i] += vec.mVec[i];
+    }
+}
 
 void CVector::Print()
 {
